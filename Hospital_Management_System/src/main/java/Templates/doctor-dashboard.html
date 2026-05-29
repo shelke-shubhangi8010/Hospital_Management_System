@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Doctor Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f6f9;
+}
+
+.sidebar{
+height:100vh;
+width:250px;
+position:fixed;
+background:#0b1f3a;
+padding-top:20px;
+}
+
+.sidebar h3{
+color:white;
+text-align:center;
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+background:#0d6efd;
+padding-left:25px;
+}
+
+.main-content{
+margin-left:250px;
+padding:25px;
+}
+
+.header{
+background:#0d6efd;
+color:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:25px;
+}
+
+.card{
+border:none;
+border-radius:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card i{
+font-size:40px;
+margin-bottom:10px;
+color:#0d6efd;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+<h3>🩺 Doctor Panel</h3>
+
+<a th:href="@{/appointments}">
+<i class="fa-solid fa-calendar-check"></i>
+ View Appointments
+</a>
+
+<a th:href="@{/patients}">
+<i class="fa-solid fa-user-injured"></i>
+ Patient History
+</a>
+
+<a th:href="@{/prescription}">
+<i class="fa-solid fa-file-prescription"></i>
+ Prescription
+</a>
+
+<a th:href="@{/labreport}">
+<i class="fa-solid fa-flask"></i>
+ Lab Reports
+</a>
+
+<a th:href="@{/schedule}">
+<i class="fa-solid fa-clock"></i>
+ Schedule
+</a>
+
+<a th:href="@{/logout}">
+<i class="fa-solid fa-right-from-bracket"></i>
+ Logout
+</a>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main-content">
+
+<div class="header">
+<h2>Welcome Doctor Dashboard</h2>
+<p>Manage patients and appointments</p>
+</div>
+
+<div class="row g-4">
+
+<!-- Appointment -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-calendar-days"></i>
+<h4>Appointments</h4>
+<p>View patient appointments</p>
+<a th:href="@{/appointments}"
+class="btn btn-primary">
+View
+</a>
+</div>
+</div>
+
+<!-- Patient History -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-notes-medical"></i>
+<h4>Patient History</h4>
+<p>Medical history records</p>
+<a th:href="@{/patients}"
+class="btn btn-success">
+Open
+</a>
+</div>
+</div>
+
+<!-- Prescription -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-file-prescription"></i>
+<h4>Prescription</h4>
+<p>Manage prescriptions</p>
+<a th:href="@{/prescription}"
+class="btn btn-info">
+Manage
+</a>
+</div>
+</div>
+
+<!-- Lab Reports -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-vial"></i>
+<h4>Lab Reports</h4>
+<p>Access lab reports</p>
+<a th:href="@{/labreport}"
+class="btn btn-warning">
+View
+</a>
+</div>
+</div>
+
+<!-- Schedule -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-user-clock"></i>
+<h4>Schedule</h4>
+<p>Manage availability</p>
+<a th:href="@{/schedule}"
+class="btn btn-danger">
+Schedule
+</a>
+</div>
+</div>
+
+<!-- Logout -->
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-right-from-bracket"></i>
+<h4>Logout</h4>
+<p>Secure logout</p>
+<a th:href="@{/logout}"
+class="btn btn-dark">
+Logout
+</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

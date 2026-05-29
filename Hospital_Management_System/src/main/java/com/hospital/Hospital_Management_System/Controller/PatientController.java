@@ -79,4 +79,9 @@ public class PatientController {
 
         return "redirect:/patients/viewPatients";
     }
+    
+    @GetMapping("/patient")
+    public String patientDashboard() {
+        return "patient-dashboard";
+    }
 }

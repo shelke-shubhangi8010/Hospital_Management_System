@@ -21,11 +21,7 @@ public class HomeController {
     @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping("/")
-    public String loginPage() {
-        return "login";
-    }
-
+   
     @GetMapping("/admin")
     public String adminPage(Model model) {
 
@@ -44,5 +40,5 @@ public class HomeController {
         return "admin";
     }
     
-   
+    
 }

@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Patient Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+background:#f4f6f9;
+font-family:Arial;
+}
+
+.sidebar{
+height:100vh;
+width:250px;
+position:fixed;
+background:#0b1f3a;
+padding-top:20px;
+}
+
+.sidebar h3{
+color:white;
+text-align:center;
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+background:#0d6efd;
+padding-left:25px;
+}
+
+.main{
+margin-left:250px;
+padding:25px;
+}
+
+.card{
+border:none;
+border-radius:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card i{
+font-size:40px;
+color:#0d6efd;
+margin-bottom:10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+
+<h3>🏥 Patient</h3>
+
+<a th:href="@{/appointment}">
+<i class="fa-solid fa-calendar-check"></i>
+ Book Appointment
+</a>
+
+<a th:href="@{/prescription}">
+<i class="fa-solid fa-file-prescription"></i>
+ Prescriptions
+</a>
+
+<a th:href="@{/doctorAvailability}">
+<i class="fa-solid fa-user-doctor"></i>
+ Doctor Availability
+</a>
+
+<a th:href="@{/billing}">
+<i class="fa-solid fa-money-bill"></i>
+ Billing Summary
+</a>
+
+<a th:href="@{/labreport}">
+<i class="fa-solid fa-flask"></i>
+ Lab Reports
+</a>
+
+<a th:href="@{/logout}">
+<i class="fa-solid fa-right-from-bracket"></i>
+ Logout
+</a>
+
+</div>
+
+<div class="main">
+
+<h2 class="mb-4">
+Welcome Patient Dashboard
+</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-calendar-plus"></i>
+<h4>Book Appointment</h4>
+<p>Schedule appointment</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-file-medical"></i>
+<h4>Prescription</h4>
+<p>View medicines</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-user-doctor"></i>
+<h4>Doctors</h4>
+<p>Check availability</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-money-check-dollar"></i>
+<h4>Billing</h4>
+<p>Payment summary</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-center p-4">
+<i class="fa-solid fa-flask"></i>
+<h4>Lab Reports</h4>
+<p>Medical reports</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

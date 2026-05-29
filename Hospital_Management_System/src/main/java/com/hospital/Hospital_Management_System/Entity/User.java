@@ -1,7 +1,5 @@
 package com.hospital.Hospital_Management_System.Entity;
 
-
-
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +11,7 @@ public class User {
 
     private String username;
     private String password;
+    private String role;
 
     public User() {}
 
@@ -39,4 +38,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    // Role Getter Setter
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+  
 }
