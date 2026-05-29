@@ -40,4 +40,13 @@ public class PatientService {
     public void deletePatient(Long id) {
         repo.deleteById(id);
     }
+    
+    public Patient getPatientById(Long id) {
+
+        return repo.findById(id).orElse(null);
+    }
+    
+    public long getPatientCount() {
+        return repo.count();
+    }
 }

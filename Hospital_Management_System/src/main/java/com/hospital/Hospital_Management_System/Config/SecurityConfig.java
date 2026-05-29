@@ -1,9 +1,6 @@
 package com.hospital.Hospital_Management_System.Config;
 
-
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -16,11 +13,31 @@ public class SecurityConfig {
             throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
+        .csrf(csrf -> csrf.disable())
 
-            .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll()
-            );
+        .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                        "/",
+                        "/register",
+                        "/saveUser",
+                        "/css/**",
+                        "/js/**")
+                .permitAll()
+
+                .anyRequest()
+                .authenticated())
+
+        .formLogin(form -> form
+                .loginPage("/")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl(
+                        "/admin",
+                        true)
+                .permitAll())
+
+        .logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .permitAll());
 
         return http.build();
     }

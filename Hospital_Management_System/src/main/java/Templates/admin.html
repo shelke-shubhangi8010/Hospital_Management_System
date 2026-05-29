@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
@@ -63,12 +63,12 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 <a href="#">Dashboard</a>
 
 
-<a href="/patient/viewPatients">Patients</a>
-
-<a href="#">Doctors</a>
-<a href="#">Appointments</a>
-<a href="#">Billing</a>
-<a href="#">Logout</a>
+<!--  <a href="/viewPatients">Patients</a>-->
+<a href="/viewPatients">Patients</a>
+<a href="/viewDoctors">Doctors</a>
+<a href="/appointments/viewAppointments">Appointments</a>
+<a href="/viewBills">Billing</a>
+<a href="/logout">Logout</a>
 
 </div>
 
@@ -81,27 +81,69 @@ box-shadow:0 2px 10px rgba(0,0,0,0.1);
 <div class="col-md-4">
 <div class="card p-3 card-box">
 <h4>Total Patients</h4>
-<h2>120</h2>
+<h2 th:text="${patientCount}"></h2>
 </div>
 </div>
 
 <div class="col-md-4">
 <div class="card p-3 card-box">
 <h4>Doctors</h4>
-<h2>35</h2>
+<h2 th:text="${doctorCount}"></h2>
 </div>
 </div>
 
 <div class="col-md-4">
 <div class="card p-3 card-box">
 <h4>Appointments</h4>
-<h2>50</h2>
+<h2 th:text="${appointmentCount}"></h2>
 </div>
 </div>
+
+<div class="card p-4 mt-4 card-box">
+
+<h4>Hospital Analytics</h4>
+
+<canvas id="hospitalChart"></canvas>
 
 </div>
 
 </div>
 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx =
+document.getElementById(
+'hospitalChart');
+
+new Chart(ctx, {
+
+type:'bar',
+
+data:{
+labels:[
+'Patients',
+'Doctors',
+'Appointments'
+],
+
+datasets:[{
+
+label:'Hospital Data',
+
+data:[
+[[${patientCount}]],
+[[${doctorCount}]],
+[[${appointmentCount}]]
+]
+
+}]
+}
+
+});
+
+</script>
 </body>
 </html>
