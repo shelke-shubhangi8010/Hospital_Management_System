@@ -69,6 +69,7 @@ public class DoctorController {
 
         return "redirect:/viewDoctors";
     }
+    
     @GetMapping("/doctor")
     public String doctorDashboard() {
         return "doctor-dashboard";

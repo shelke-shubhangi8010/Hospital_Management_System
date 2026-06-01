@@ -24,6 +24,8 @@ public class PatientController {
 
         return "patientHistory";
     }
+    
+    
     @GetMapping("/patient")
     public String patientDashboard() {
         return "patient-dashboard";
