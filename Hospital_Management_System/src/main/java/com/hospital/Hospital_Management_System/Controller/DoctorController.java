@@ -73,5 +73,6 @@ public class DoctorController {
     public String doctorDashboard() {
         return "doctor-dashboard";
     }
+   
 }
 

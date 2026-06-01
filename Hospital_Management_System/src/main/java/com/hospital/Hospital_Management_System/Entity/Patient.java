@@ -1,7 +1,5 @@
 package com.hospital.Hospital_Management_System.Entity;
 
-
-
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +10,10 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private int age;
+    private String patientName;
     private String disease;
-    private String phone;
+    private String doctorName;
+    private String prescription;
 
     public Patient() {
     }
@@ -28,20 +26,12 @@ public class Patient {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPatientName() {
+        return patientName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public String getDisease() {
@@ -52,11 +42,19 @@ public class Patient {
         this.disease = disease;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
     }
 }

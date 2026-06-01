@@ -53,6 +53,8 @@ public class AppointmentController {
     @PostMapping("/updateAppointment")
     public String updateAppointment(Appointment a) {
 
+        System.out.println("ID = " + a.getId());
+
         service.saveAppointment(a);
 
         return "redirect:/appointments/viewAppointments";

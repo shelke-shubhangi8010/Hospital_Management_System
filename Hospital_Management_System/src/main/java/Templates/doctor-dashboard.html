@@ -87,14 +87,13 @@ color:#0d6efd;
 
 <h3>🩺 Doctor Panel</h3>
 
-<a th:href="@{/appointments}">
-<i class="fa-solid fa-calendar-check"></i>
- View Appointments
+<a th:href="@{/appointments/viewAppointments}">
+<i class="fa-solid fa-user-injured"></i>
+ Appointments
 </a>
 
-<a th:href="@{/patients}">
-<i class="fa-solid fa-user-injured"></i>
- Patient History
+<a th:href="@{/patients/history}">
+Patient History
 </a>
 
 <a th:href="@{/prescription}">
@@ -137,7 +136,7 @@ color:#0d6efd;
 <i class="fa-solid fa-calendar-days"></i>
 <h4>Appointments</h4>
 <p>View patient appointments</p>
-<a th:href="@{/appointments}"
+<a th:href="@{/appointments/viewAppointments}"
 class="btn btn-primary">
 View
 </a>
@@ -151,7 +150,7 @@ View
 <i class="fa-solid fa-notes-medical"></i>
 <h4>Patient History</h4>
 <p>Medical history records</p>
-<a th:href="@{/patients}"
+<a th:href="@{/patients/history}"
 class="btn btn-success">
 Open
 </a>

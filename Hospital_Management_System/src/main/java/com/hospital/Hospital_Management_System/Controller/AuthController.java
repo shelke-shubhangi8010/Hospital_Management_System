@@ -2,6 +2,7 @@ package com.hospital.Hospital_Management_System.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.hospital.Hospital_Management_System.Entity.User;
@@ -13,9 +14,19 @@ public class AuthController {
     @Autowired
     private UserService service;
 
-    // Login Page
+    // Home Page
     @GetMapping("/")
-    public String loginPage() {
+    public String homePage() {
+        return "home";
+    }
+
+    // Role Login Page
+    @GetMapping("/login/{role}")
+    public String roleLogin(
+            @PathVariable String role,
+            Model model) {
+
+        model.addAttribute("role", role);
         return "login";
     }
 
@@ -34,21 +45,20 @@ public class AuthController {
 
     // Login Logic
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username,
-                            @RequestParam String password) {
+    public String loginUser(
+            @RequestParam String username,
+            @RequestParam String password,
+            @RequestParam String role) {
 
         User user = service.login(username, password);
-        System.out.println("Role = " + user.getRole());
 
-        if(user != null) {
+        if(user != null &&
+           user.getRole().equalsIgnoreCase(role)) {
 
-            if(user.getRole().equalsIgnoreCase("ADMIN")) {
-                return "redirect:/admin";
-            }
-            else if(user.getRole().equalsIgnoreCase("DOCTOR")) {
+             if(role.equalsIgnoreCase("DOCTOR")) {
                 return "redirect:/doctor";
             }
-            else if(user.getRole().equalsIgnoreCase("PATIENT")) {
+            else {
                 return "redirect:/patient";
             }
         }

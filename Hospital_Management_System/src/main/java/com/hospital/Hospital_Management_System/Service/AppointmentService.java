@@ -1,7 +1,5 @@
 package com.hospital.Hospital_Management_System.Service;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +14,23 @@ public class AppointmentService {
     @Autowired
     private AppointmentRepository repo;
 
-    public Appointment saveAppointment(
-            Appointment a) {
-
-        return repo.save(a);
-    }
-
+    // View All
     public List<Appointment> getAllAppointments() {
         return repo.findAll();
     }
 
-    public Appointment getAppointmentById(
-            Long id) {
+    // Save + Update
+    public Appointment saveAppointment(Appointment a) {
+        return repo.save(a);
+    }
 
+    // Edit
+    public Appointment getAppointmentById(Long id) {
         return repo.findById(id).orElse(null);
     }
 
-    public void deleteAppointment(
-            Long id) {
-
+    // Delete
+    public void deleteAppointment(Long id) {
         repo.deleteById(id);
-    }
-    
-    public long getAppointmentCount() {
-        return repo.count();
     }
 }

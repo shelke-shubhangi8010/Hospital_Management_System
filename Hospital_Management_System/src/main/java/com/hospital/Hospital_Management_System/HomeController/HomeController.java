@@ -33,9 +33,7 @@ public class HomeController {
                 "doctorCount",
                 doctorService.getDoctorCount());
 
-        model.addAttribute(
-                "appointmentCount",
-                appointmentService.getAppointmentCount());
+        
 
         return "admin";
     }

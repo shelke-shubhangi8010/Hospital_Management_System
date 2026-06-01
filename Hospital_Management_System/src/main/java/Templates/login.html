@@ -53,8 +53,8 @@ box-shadow:0 0 20px rgba(0,0,0,0.3);
 
 <div class="login-box">
 
-<h3 class="text-center text-primary mb-4">
-Login
+<h3 class="text-center text-primary">
+<span th:text="${role}"></span> Login
 </h3>
 
 <form th:action="@{/login}" method="post">
@@ -69,6 +69,9 @@ name="password"
 placeholder="Password"
 class="form-control mb-3">
 
+<input type="hidden"
+name="role"
+th:value="${role}">
 <button class="btn btn-primary w-100">
 Login
 </button>
