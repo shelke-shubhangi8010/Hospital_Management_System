@@ -1,4 +1,4 @@
-package com.hospital.Hospital_Management_System.Controller;
+/*package com.hospital.Hospital_Management_System.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,4 +30,52 @@ public class PatientController {
     public String patientDashboard() {
         return "patient-dashboard";
     }
-}
+}*/
+
+
+
+
+    
+    package com.hospital.Hospital_Management_System.Controller;
+
+    import org.springframework.stereotype.Controller;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+    @Controller
+    public class PatientController {
+
+        @GetMapping("/patient")
+        public String patientDashboard() {
+            return "patient-dashboard";
+        }
+
+        @GetMapping("/appointment")
+        public String appointmentPage() {
+            return "appointment";
+        }
+     /*
+        @GetMapping("/prescription")
+        public String prescriptionPage() {
+            return "prescription";
+        }*/
+
+        @GetMapping("/doctorAvailability")
+        public String doctorAvailabilityPage() {
+            return "doctorAvailability";
+        }
+
+        @GetMapping("/billing")
+        public String billingPage() {
+            return "billing";
+        }
+
+        @GetMapping("/labreport")
+        public String labReportPage() {
+            return "labreport";
+        }
+
+        @GetMapping("/logout")
+        public String logout() {
+            return "redirect:/";
+        }
+    }

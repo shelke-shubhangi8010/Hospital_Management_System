@@ -143,7 +143,7 @@ Login
 </html>-->
 
 
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -278,21 +278,316 @@ footer {
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
+        <li><a href="/login/patient" class="btn Patient">Patient Login</a></li>
+       <li> <a href="/login/doctor" class="btn Doctor">Doctor Login</a></li>
     </ul>
 </nav>
-
+<!--  
 <div class="container">
     <div class="card">
         <h2>Welcome</h2>
         <p>Choose Login Type</p>
 
-        <a href="/login/patient" class="btn patient">Patient Login</a>
-        <a href="/login/doctor" class="btn doctor">Doctor Login</a>
+        <a href="/login/patient" class="btn Patient">Patient Login</a>
+        <a href="/login/doctor" class="btn Doctor">Doctor Login</a>
     </div>
-</div>
-
+</div>   -->
+<!--  
 <footer>
     © 2026 Hospital Management System | All Rights Reserved
+</footer>
+
+</body>
+</html>-->
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hospital Management System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:url('https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover;
+background-size:cover;
+display:flex;
+flex-direction:column;
+position:relative;
+overflow-x:hidden;
+}
+
+/* Overlay */
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+z-index:1;
+}
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+position:relative;
+z-index:2;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:white;
+}
+
+.logo span{
+color:#4fc3f7;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:20px;
+align-items:center;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:15px;
+font-weight:500;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#4fc3f7;
+}
+
+/* Hero Section */
+
+.container{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+z-index:2;
+padding:40px 20px;
+min-height:70vh;
+}
+
+.card{
+width:480px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:25px;
+text-align:center;
+color:white;
+box-shadow:0 8px 30px rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.card h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:15px;
+margin-bottom:25px;
+color:#eee;
+}
+
+.btn{
+display:block;
+margin:12px auto;
+padding:14px;
+width:100%;
+border:none;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-size:17px;
+font-weight:600;
+transition:0.3s;
+}
+
+.patient{
+background:linear-gradient(45deg,#00b894,#00cec9);
+}
+
+.doctor{
+background:linear-gradient(45deg,#0984e3,#6c5ce7);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+
+footer{
+position:relative;
+z-index:2;
+background:rgba(0,0,0,0.85);
+padding:25px;
+text-align:center;
+color:white;
+margin-top:auto;
+}
+
+.footer-title{
+font-size:18px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.footer-text{
+font-size:14px;
+color:#ccc;
+margin-bottom:15px;
+}
+
+.social-icons a{
+display:inline-block;
+width:42px;
+height:42px;
+line-height:42px;
+border-radius:50%;
+background:#1f2d3d;
+color:white;
+margin:0 8px;
+font-size:18px;
+transition:0.3s;
+}
+
+.social-icons a:hover{
+background:#0d6efd;
+transform:translateY(-4px);
+}
+
+.copy{
+margin-top:15px;
+font-size:13px;
+color:#bbb;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- Navbar -->
+
+<nav>
+
+<div class="logo">
+🏥 <span>Hospital</span> Management System
+</div>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- Hero -->
+
+<div class="container">
+
+<div class="card">
+
+<h1>Welcome</h1>
+
+<p>
+Smart Healthcare Management Platform for
+Patients and Doctors.
+Book appointments, manage reports and access
+medical services easily.
+</p>
+
+<a href="/login/PATIENT" class="btn patient">
+<i class="fa-solid fa-user"></i>
+ Patient Login
+</a>
+
+<a href="/login/DOCTOR" class="btn doctor">
+<i class="fa-solid fa-user-doctor"></i>
+ Doctor Login
+</a>
+
+</div>
+
+</div>
+
+<!-- Footer -->
+
+<footer>
+
+<div class="footer-title">
+🏥 Hospital Management System
+</div>
+
+<div class="footer-text">
+Providing Better Healthcare Experience with
+Technology & Smart Medical Services
+</div>
+
+<div class="social-icons">
+
+<a href="#">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#">
+<i class="fa-solid fa-envelope"></i>
+</a>
+
+</div>
+
+<div class="copy">
+© 2026 Hospital Management System |
+All Rights Reserved
+</div>
+
 </footer>
 
 </body>

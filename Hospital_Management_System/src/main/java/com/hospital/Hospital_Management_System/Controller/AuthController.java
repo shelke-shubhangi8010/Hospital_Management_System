@@ -14,55 +14,49 @@ public class AuthController {
     @Autowired
     private UserService service;
 
-    // Home Page
+    // Home
     @GetMapping("/")
     public String homePage() {
         return "home";
     }
 
-    // Role Login Page
+    // Role login page
     @GetMapping("/login/{role}")
-    public String roleLogin(
-            @PathVariable String role,
-            Model model) {
-
+    public String roleLogin(@PathVariable String role, Model model) {
         model.addAttribute("role", role);
         return "login";
     }
 
-    // Register Page
+    // Register
     @GetMapping("/register")
     public String registerPage() {
         return "register";
     }
 
-    // Save User
     @PostMapping("/saveUser")
     public String saveUser(User user) {
         service.saveUser(user);
         return "redirect:/";
     }
 
-    // Login Logic
+    // LOGIN
     @PostMapping("/login")
-    public String loginUser(
-            @RequestParam String username,
-            @RequestParam String password,
-            @RequestParam String role) {
+    public String loginUser(@RequestParam String username,
+                            @RequestParam String password,
+                            @RequestParam String role) {
 
         User user = service.login(username, password);
 
-        if(user != null &&
-           user.getRole().equalsIgnoreCase(role)) {
+        if(user != null && user.getRole().equalsIgnoreCase(role)) {
 
-             if(role.equalsIgnoreCase("DOCTOR")) {
+            if(role.equalsIgnoreCase("DOCTOR")) {
                 return "redirect:/doctor";
             }
-            else {
+            else if(role.equalsIgnoreCase("PATIENT")) {
                 return "redirect:/patient";
             }
         }
 
-        return "redirect:/?error";
+        return "redirect:/login/" + role + "?error";
     }
 }
