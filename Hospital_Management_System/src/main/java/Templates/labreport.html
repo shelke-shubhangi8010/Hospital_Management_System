@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lab Report Management</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI';
+background:linear-gradient(to right,#eef2f7,#dbeafe);
+}
+
+.container-box{
+width:700px;
+margin:40px auto;
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+
+.heading{
+text-align:center;
+margin-bottom:30px;
+color:#0d6efd;
+}
+
+.heading i{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.form-control{
+border-radius:10px;
+}
+
+.btn-save{
+width:100%;
+padding:12px;
+font-size:18px;
+border-radius:12px;
+}
+
+label{
+font-weight:600;
+margin-bottom:6px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container-box">
+
+<div class="heading">
+<i class="fa-solid fa-flask-vial"></i>
+<h2>Lab Report Management</h2>
+<p class="text-muted">
+Upload Patient Medical Report
+</p>
+</div>
+
+<form th:action="@{/saveReport}" method="post">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Patient Name</label>
+<input type="text"
+name="patientName"
+class="form-control"
+placeholder="Enter patient name"
+required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Test Name</label>
+<input type="text"
+name="testName"
+class="form-control"
+placeholder="Blood Test / X-Ray"
+required>
+</div>
+
+</div>
+
+<div class="mb-3">
+<label>Report Result</label>
+<textarea
+name="reportResult"
+class="form-control"
+rows="4"
+placeholder="Enter report findings"
+required></textarea>
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>Report Date</label>
+<input type="date"
+name="reportDate"
+class="form-control"
+required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Doctor Remarks</label>
+<input type="text"
+name="doctorRemark"
+class="form-control"
+placeholder="Normal / Need Follow-up">
+</div>
+
+</div>
+
+<button type="submit"
+class="btn btn-primary btn-save">
+<i class="fa-solid fa-floppy-disk"></i>
+ Save Lab Report
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

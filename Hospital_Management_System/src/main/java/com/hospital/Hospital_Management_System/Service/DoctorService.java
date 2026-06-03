@@ -20,7 +20,7 @@ public class DoctorService {
         return repo.save(d);
     }
 
-    public List<Doctor> getAllDoctors() {
+    public  List<Doctor> getAllDoctors() {
         return repo.findAll();
     }
 
@@ -35,4 +35,6 @@ public class DoctorService {
     public long getDoctorCount() {
         return repo.count();
     }
+
+	
 }

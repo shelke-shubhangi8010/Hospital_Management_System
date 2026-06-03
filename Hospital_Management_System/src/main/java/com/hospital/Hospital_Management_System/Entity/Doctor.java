@@ -16,6 +16,10 @@ public class Doctor {
     private String specialization;
     private String phone;
     private int experience;
+    
+   
+    private String availableTime;
+    private String status;
 
     public Doctor() {
     }
@@ -59,4 +63,21 @@ public class Doctor {
     public void setExperience(int experience) {
         this.experience = experience;
     }
+
+	public String getAvailableTime() {
+		return availableTime;
+	}
+
+	public void setAvailableTime(String availableTime) {
+		this.availableTime = availableTime;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+    
 }

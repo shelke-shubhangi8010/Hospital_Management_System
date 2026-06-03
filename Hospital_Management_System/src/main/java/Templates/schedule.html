@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Manage Availability</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+body{
+background:#eef2f7;
+font-family:'Segoe UI';
+}
+
+.box{
+width:650px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+h2{
+text-align:center;
+color:#0d6efd;
+margin-bottom:25px;
+}
+
+.btn-save{
+width:100%;
+border-radius:10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+
+<h2>
+<i class="fa-solid fa-user-clock"></i>
+ Manage Availability
+</h2>
+
+<form th:action="@{/saveSchedule}" method="post">
+
+<div class="mb-3">
+<label>Doctor Name</label>
+<input type="text"
+name="doctorName"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Specialization</label>
+<input type="text"
+name="specialization"
+class="form-control"
+placeholder="Cardiologist"
+required>
+</div>
+
+<div class="mb-3">
+<label>Available Day</label>
+<select name="day" class="form-control">
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+<option>Saturday</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label>Available Time</label>
+<input type="text"
+name="time"
+class="form-control"
+placeholder="10 AM - 2 PM"
+required>
+</div>
+
+<div class="mb-3">
+<label>Status</label>
+<select name="status" class="form-control">
+<option>Available</option>
+<option>Not Available</option>
+<option>On Leave</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label>Consultation Type</label>
+<select name="consultationType"
+class="form-control">
+<option>Online</option>
+<option>Offline</option>
+<option>Both</option>
+</select>
+</div>
+
+<div class="mb-3">
+<label>Consultation Fees</label>
+<input type="number"
+name="fees"
+class="form-control"
+placeholder="500">
+</div>
+
+<button type="submit"
+class="btn btn-primary btn-save">
+<i class="fa-solid fa-floppy-disk"></i>
+ Save Availability
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
