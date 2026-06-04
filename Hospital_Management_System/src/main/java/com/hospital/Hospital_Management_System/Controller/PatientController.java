@@ -44,10 +44,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.hospital.Hospital_Management_System.Entity.Appointment;
 import com.hospital.Hospital_Management_System.Entity.Doctor;
+import com.hospital.Hospital_Management_System.Entity.Patient;
+import com.hospital.Hospital_Management_System.Repository.AppointmentRepository;
+import com.hospital.Hospital_Management_System.Service.AppointmentService;
 import com.hospital.Hospital_Management_System.Service.DoctorService;
 import com.hospital.Hospital_Management_System.Service.LabReportService;
+import com.hospital.Hospital_Management_System.Service.PatientService;
 import com.hospital.Hospital_Management_System.Service.ScheduleService;
 
     @Controller
@@ -69,6 +76,8 @@ import com.hospital.Hospital_Management_System.Service.ScheduleService;
         public String prescriptionPage() {
             return "prescription";
         }*/
+        @Autowired
+        AppointmentService appointmentservice;
 
         @Autowired
         ScheduleService scheduleService;
@@ -92,7 +101,13 @@ import com.hospital.Hospital_Management_System.Service.ScheduleService;
         }
 
         @GetMapping("/labreport")
-        public String labReportPage() {
+        public String labReportPage(Model model) {
+
+            model.addAttribute(
+                "patientList",
+                patientService.getAllPatients()
+            );
+
             return "labreport";
         }
 
@@ -110,5 +125,31 @@ import com.hospital.Hospital_Management_System.Service.ScheduleService;
             );
 
             return "medicalReport";
+        }
+        
+        @Autowired
+        PatientService patientService;
+        @GetMapping("/patientHistory")
+        public String patientHistory(Model model)
+        {
+            List<Patient> patientList = patientService.getAllPatients();
+
+            model.addAttribute("patientList", patientList);
+
+            return "patientHistory";
+        }
+        
+        @GetMapping("/patient/add")
+        public String showAddPatientForm(Model model) {
+            model.addAttribute("patient", new Patient());
+            return "addPatient";
+        }
+        
+        @PostMapping("/patient/save")
+        public String savePatient(@ModelAttribute Patient patient) {
+
+            AppointmentRepository.saveAll(patient);
+
+            return "redirect:/patientHistory";
         }
     }

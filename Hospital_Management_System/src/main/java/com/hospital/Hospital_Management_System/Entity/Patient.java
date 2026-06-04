@@ -9,13 +9,21 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String patientName;
+    private String name;
+   
     private String disease;
     private String doctorName;
     private String prescription;
+    private String labReport;
+    public String getLabReport() {
+		return labReport;
+	}
 
-    public Patient() {
+	public void setLabReport(String labReport) {
+		this.labReport = labReport;
+	}
+
+	public Patient() {
     }
 
     public Long getId() {
@@ -26,15 +34,16 @@ public class Patient {
         this.id = id;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
+   
+    public String getName() {
+		return name;
+	}
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getDisease() {
+	public String getDisease() {
         return disease;
     }
 
